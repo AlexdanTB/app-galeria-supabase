@@ -24,7 +24,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: modoOscuro ? ThemeData.dark() : ThemeData.light(),
+      theme: modoOscuro == true ? ThemeData.dark() : ThemeData.light(),
       routes: {
         "/": (context) => WelcomeScreen(cambiarTema, modoOscuro),
         "/galeria": (context) => GaleriaScreen(),

@@ -11,7 +11,7 @@ class WelcomeScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () => cambiarTemaW,
+            onPressed: () => cambiarTemaW(),
             icon: mOscuro
                 ? Icon(Icons.light_mode_sharp)
                 : Icon(Icons.dark_mode_rounded),
