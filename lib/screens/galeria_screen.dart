@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -33,6 +35,21 @@ class _ImagenState extends State<Imagen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        foto == null
+            ? Icon(Icons.camera, size: 150)
+            : Image.file(File(foto!.path)),
+        FilledButton(
+          onPressed: () => abrirGaleria(actualizarFoto),
+          child: Text("Abrir galeria"),
+        ),
+      ],
+    );
   }
+}
+
+Future<void> abrirGaleria(Function actualizarImg) async {
+  final imagen = await ImagePicker().pickImage(source: ImageSource.gallery);
+  actualizarImg(imagen);
 }
