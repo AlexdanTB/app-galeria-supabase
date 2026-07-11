@@ -1,3 +1,5 @@
+import 'package:app_galeria/screens/galeria_screen.dart';
+import 'package:app_galeria/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +11,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      routes: {
+        "/": (context) => WelcomeScreen(),
+        "/galeria": (context) => GaleriaScreen(),
+      },
     );
   }
 }
