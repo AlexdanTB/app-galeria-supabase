@@ -1,7 +1,8 @@
 import 'dart:io';
-
+import 'package:app_galeria/main.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class GaleriaScreen extends StatelessWidget {
   const GaleriaScreen({super.key});
@@ -44,6 +45,10 @@ class _ImagenState extends State<Imagen> {
           onPressed: () => abrirGaleria(actualizarFoto),
           child: Text("Abrir galeria"),
         ),
+        ElevatedButton(
+          onPressed: () => subirImagen(foto!.path),
+          child: Text('Subir Imagen'),
+        ),
       ],
     );
   }
@@ -54,4 +59,15 @@ Future<void> abrirGaleria(Function actualizarImg) async {
     source: ImageSource.gallery,
   ); //Se puede cambiar a camera
   actualizarImg(imagen);
+}
+
+Future<void> subirImagen(String path) async {
+  final avatarFile = File(path);
+  final String fullPath = await supabase.storage
+      .from('avatars')
+      .upload(
+        'public/avatar1.png',
+        avatarFile,
+        fileOptions: const FileOptions(cacheControl: '5', upsert: false),
+      );
 }
