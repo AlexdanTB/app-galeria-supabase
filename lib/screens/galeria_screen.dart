@@ -50,6 +50,8 @@ class _ImagenState extends State<Imagen> {
 }
 
 Future<void> abrirGaleria(Function actualizarImg) async {
-  final imagen = await ImagePicker().pickImage(source: ImageSource.gallery);
+  final imagen = await ImagePicker().pickImage(
+    source: ImageSource.gallery,
+  ); //Se puede cambiar a camera
   actualizarImg(imagen);
 }

@@ -1,10 +1,19 @@
 import 'package:app_galeria/screens/galeria_screen.dart';
 import 'package:app_galeria/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(const MainApp());
+Future<void> main() async {
+  await Supabase.initialize(
+    url: 'https://xwqckriaecsclqazsfjd.supabase.co',
+    publishableKey: 'sb_publishable_C44Szb5oT3RBcp-aBbRQpg_fR11Hqh7',
+  );
+
+  runApp(MainApp());
 }
+
+// Get a reference your Supabase client
+final supabase = Supabase.instance.client;
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
